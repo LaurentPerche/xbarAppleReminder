@@ -1,22 +1,23 @@
 #!/bin/sh
 # <xbar.title>Todo List for menu bar (Updated)</xbar.title>
 # <xbar.version>v1.1</xbar.version>
-# <xbar.author>Julian Naumann / Updated by ChatGPT</xbar.author>
-# <xbar.author.github>JulianNaumann</xbar.author.github>
+# <xbar.author>Laurent Perche/ Updated by ChatGPT</xbar.author>
+# <xbar.author.github>laurentperche</xbar.author.github>
 # <xbar.desc>
-#   Display a todo list in the menu bar with items taken from macOS Reminders.app 
-#   from the list called "Today". The menu bar shows the first (next) reminder,
-#   and clicking it opens a dropdown listing all active reminders. Click any 
-#   reminder in the dropdown to mark it completed.
+#   This is an enhanced version of JulianNaumann original script
+#   https://github.com/matryer/xbar-plugins/blob/main/Tools/todolist.2m.sh
+#   Display a todo list in the menu bar with items taken from the macos' Reminders.app from the list called 'Today'.
+#   The one displayed in the menu bar is the first one on the "Today" list
+#   If you click on the Reminder, it will show a dropdown list of all your 'Today' Reminder
+#   If you click on any of the reminder in the dropdown list, it will remove it from the 'Today' list (mark as completed)
+#  
 # </xbar.desc>
 # <xbar.image>https://i.imgur.com/d4cBUKW.png</xbar.image>
 # <xbar.dependencies>bash,osascript</xbar.dependencies>
-# <xbar.abouturl>https://github.com/JulianNaumann/bitbar-todolist</xbar.abouturl>
+# <xbar.abouturl>https://github.com/laurentperche/xbaarapplereminder</xbar.abouturl>
 
 # Icon credit, all icons from <https://www.flaticon.com>:
 # - Bell icon made by Nice And Serious <https://niceandserious.com>
-# - Todo list icon made by Freepik <https://www.freepik.com>
-# - Check icon made by Smashicons <https://smashicons.com>
 
 ########################################################################
 # When a reminder is clicked, it is passed as:
@@ -92,4 +93,4 @@ for i in "${!todos[@]}"; do
     # AppleScript uses 1-based indexing.
     index=$((i+1))
     echo "$todo | length=30 bash='$0' param1=done param2=$index terminal=false refresh=true"
-done XbarAppleReminder.sh
+done
